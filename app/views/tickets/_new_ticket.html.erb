@@ -1,0 +1,69 @@
+<%= form_with(model: ticket, local: true) do |form| %>
+  <% if ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+        <% ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seat_id_seq %>
+    <%= form.text_field :seat_id_seq %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email_address %>
+    <%= form.text_field :email_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+
+  <% if controller_name == "tickets" %>
+    <div class="field">
+    <%= form.label :event_id %>
+    <%= form.collection_select(:event_id, Event.all, :id, :artist) %>
+    </div>
+  <% end %>
+  <% if controller_name == "events" %>
+    <div class="field" style="visibility: hidden">
+    <%= form.label :event_id %>
+    <%= form.collection_select(:event_id, Event.all, :id, :artist) %>
+    </div>
+  <% end %>
+  
+    <div class="field" style="visibility: hidden" >
+      <%= form.label :user_id %>
+      <%= form.collection_select(:user_id, User.all, :id, :email) %>
+    </div>
+
+
+
+
+    <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

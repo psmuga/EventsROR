@@ -1,0 +1,10 @@
+<h1> Wszystkie wydarzenia</h1> 
+
+<%= render 'events_list', events: Event.all%>
+
+
+<%= link_to 'Nowe ogłoszenie', new_event_path, :class => "btn btn-primary" %>
+
+
+
+<%= link_to 'Home', root_path, :class => "btn btn-primary" %>

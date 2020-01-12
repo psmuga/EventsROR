@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tickets</h1>
+
+
+<%= render 'tickets_list', tickets: Ticket.all%>
+
+
+
+
+<%= link_to 'New Ticket', new_ticket_path, :class => "btn btn-primary" %>
+<%= link_to 'Home', root_path, :class => "btn btn-primary" %>

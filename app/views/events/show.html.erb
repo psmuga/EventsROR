@@ -1,0 +1,38 @@
+<p id="komunikat"><%= flash[:komunikat] %></p>
+
+<h1>Event</h1>
+<p>
+  <strong>Artist:</strong>
+  <%= @event.artist %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @event.event_date %>
+</p>
+
+<p>
+  <strong>Price low:</strong>
+  <%= @event.price_low %>
+</p>
+
+<p>
+  <strong>Price high:</strong>
+  <%= @event.price_high %>
+</p>
+
+
+<h1>Buy ticket</h1>
+<%= render "tickets/new_ticket", ticket: Ticket.new(event_id: @event.id) %>
+
+
+<h1>Ordered</h1>
+<%= render "tickets/tickets_list", tickets: Ticket.where(event_id: @event.id) %>
+
+
+<%= link_to 'Back', events_index_path, :class => "btn btn-primary" %>
